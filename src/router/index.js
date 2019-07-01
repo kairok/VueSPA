@@ -22,6 +22,7 @@ export default new Router({
       },
       {
         path: '/ad/:id', // localhost:8080
+        props:true,
         name: 'Ad',
         component: Ad
       },
