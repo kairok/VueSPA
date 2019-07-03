@@ -21,6 +21,7 @@ export default {
               commit('setLoading', true)
               try {
                 const user = await fb.auth().signInWithEmailAndPassword(email, password)   //signInWithEmailAndPassword
+                console.log(user)
                 commit('setUser', new User(user.uid))
                 commit('setLoading', false)
               } catch (error) {
@@ -42,12 +43,22 @@ export default {
             throw error
           }
 
+      },
+      autoLoginUser ({commit}, payload  ) {
+        commit('setUser', new User(payload.uid))
+      },
+      logoutUser ({commit}){
+        fb.auth().signOut()
+        commit('setUser', null)
       }
 
   },
   getters: {
     user (state) {
       return state.user
+    },
+    isUserLoggedIn (state) {
+      return state.user !== null
     }
   }
 }

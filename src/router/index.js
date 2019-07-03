@@ -8,6 +8,7 @@ import NewAd from '@/components/Ads/NewAd'
 import Login from '@/components/Auth/Login'
 import Registration from '@/components/Auth/Registration'
 import Orders from '@/components/User/Orders'
+import AuthGuard from './auth-guard'
 
 
 
@@ -29,12 +30,14 @@ export default new Router({
     {
         path: '/list', // localhost:8080
         name: 'AdList',
-        component: AdList
+        component: AdList,
+        beforeEnter: AuthGuard
       },
     {
         path: '/new', // localhost:8080
         name: 'NewAd',
-        component: NewAd
+        component: NewAd,
+        beforeEnter: AuthGuard
       },
     {
         path: '/login', // localhost:8080
@@ -49,7 +52,8 @@ export default new Router({
     {
         path: '/orders', // localhost:8080
         name: 'Orders',
-        component: Orders
+        component: Orders,
+        beforeEnter: AuthGuard
       },
   ],
   mode: 'history'

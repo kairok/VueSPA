@@ -22,17 +22,23 @@ new Vue({
   components: { App },
   template: '<App/>',
   created() {
-
     fb.initializeApp(
       {
       apiKey: "AIzaSyAPZkoMDECveFuarSpFmkMzpgSJ1VsDRlA",
       authDomain: "its-ads-5a856.firebaseapp.com",
       databaseURL: "https://its-ads-5a856.firebaseio.com",
       projectId: "its-ads-5a856",
-      storageBucket: "",
+      storageBucket: "its-ads-5a856.appspot.com",
       messagingSenderId: "278835538021",
       appId: "1:278835538021:web:9d55d57af55475db"
-      }
-    )
+      })
+      fb.auth().onAuthStateChanged(user => {
+          if (user) {
+            this.$store.dispatch('autoLoginUser', user)
+          }
+      })
+
+      this.$store.dispatch('fetchAds')
+
   }
 })
