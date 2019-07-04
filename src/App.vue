@@ -9,7 +9,7 @@
           <v-list-tile
             v-for="link of links"
             :key = "link.title"
-             @click=""
+            
             :to="link.url"
           >
             <v-list-tile-action>

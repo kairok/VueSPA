@@ -24,7 +24,7 @@
                    </v-form>
                   <v-layout row class="mb-3">
                       <v-flex xs12>
-                          <v-btn class="warning" >
+                          <v-btn class="warning" @click="trigerUpload">
                             Upload
                             <v-icon right dark>cloud_upload</v-icon>
                           </v-btn>
@@ -33,7 +33,7 @@
                           type="file"
                            style="display: none;"
                             accept="image/*"
-
+                            @change="onFileChange"
                             >
 
                       </v-flex>
@@ -58,7 +58,7 @@
                          <v-btn
                            class="success"
                            :loading ="loading"
-                           :disabled="!valid || loading"
+                           :disabled="!valid  || loading "
                            @click="createAd"
                          >Create ad</v-btn>
                       </v-flex>
@@ -97,7 +97,7 @@
                   promo: this.promo,
                   imageSrc: 'https://www.coderomeos.org/storage/uploads/images/posts/vuetify-material-component-framework-5a8dc1db11384.png'
                 }
-                console.log(ad)
+               // console.log(ad)
                 this.$store.dispatch('createAd', ad)
                   .then(() => {
                       this.$router.push('/list')
@@ -106,21 +106,21 @@
               }
           },
 
-      //    trigerUpload () {
-       //     this.$refs.fileInput.click()
-       //   },
-      ///    onFileChange(event) {
-      //      const file = event.target.files[0]
+         trigerUpload () {
+           this.$refs.fileInput.click()
+         },
+          onFileChange(event) {
+           const file = event.target.files[0]
 
-      //      const reader = new FileReader()
-      //      reader.onload = e => {
-      //          this.imageSrc = reader.result
+           const reader = new FileReader()
+           reader.onload = e => {
+               this.imageSrc = reader.result
 
-        //    }
-       //     reader.readAsDataURL(file)
-        //    this.image = file
+           }
+           reader.readAsDataURL(file)
+           this.image = file
 
-          //}
+          }
       }
     }
 </script>

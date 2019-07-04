@@ -8,10 +8,10 @@ import store from './store'
 import 'vuetify/dist/vuetify.min.css' // Ensure you are using css-loader
 import Vuetify from 'vuetify'
 import * as fb from 'firebase'
-
+import buyModal from '@/components/Shared/buy'
 
 Vue.use(Vuetify)
-
+Vue.component('app-buy-modal', buyModal)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
