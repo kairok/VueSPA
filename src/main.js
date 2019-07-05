@@ -9,8 +9,14 @@ import 'vuetify/dist/vuetify.min.css' // Ensure you are using css-loader
 import Vuetify from 'vuetify'
 import * as fb from 'firebase'
 import buyModal from '@/components/Shared/buy'
+import colors from 'vuetify/es5/util/colors'
 
-Vue.use(Vuetify)
+Vue.use(Vuetify, {
+  theme: {
+    primary: colors.purple.lighten1,
+    
+    }
+})
 Vue.component('app-buy-modal', buyModal)
 Vue.config.productionTip = false
 
